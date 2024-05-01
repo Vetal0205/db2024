@@ -3017,3 +3017,11 @@ SET type = CASE
     WHEN price >= 75001 THEN 'Suite'
     ELSE type
 END;
+-- Для таблиці hotels
+SELECT setval('hotels_id_seq', (SELECT MAX(id) FROM hotels));
+
+-- Для таблиці rooms
+SELECT setval('rooms_id_seq', (SELECT MAX(id) FROM rooms));
+
+-- Для таблиці customers
+SELECT setval('customers_id_seq', (SELECT MAX(id) FROM customers));

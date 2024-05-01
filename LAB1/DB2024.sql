@@ -40,6 +40,16 @@ CREATE TABLE "bookings" (
   "total_price" DECIMAL(10,1)
 );
 
+CREATE TABLE "audit_log" (
+    "log_id" SERIAL PRIMARY KEY,
+    "table_name" VARCHAR(255),
+    "operation_type" VARCHAR(50),
+    "old_value" TEXT,
+    "new_value" TEXT,
+    "operation_timestamp" TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+
 ALTER TABLE "rooms" ADD FOREIGN KEY ("hotel_id") REFERENCES "hotels" ("id");
 
 ALTER TABLE "bookings" ADD FOREIGN KEY ("customer_id") REFERENCES "customers" ("id");
